@@ -1,17 +1,18 @@
 import json
 from os import path
 
+
 class ConfigManager:
 	'''
-		Class that represents configuration of the program
+			Class that represents configuration of the program
 	'''
 
-	def __init__(self, cnn : str):
+	def __init__(self, cnn: str):
 		if cnn.isspace():
 			raise ValueError(cnn)
 
 		self.config = {
-			'cnn' : cnn
+			'cnn': cnn
 		}
 
 	def get_connection_string(self):
@@ -20,7 +21,7 @@ class ConfigManager:
 
 class JsonConfigManager(ConfigManager):
 	'''
-		Manager to read / write configuration of the program.
+			Manager to read / write configuration of the program.
 	'''
 
 	file_name = 'configuration.json'
@@ -34,7 +35,6 @@ class JsonConfigManager(ConfigManager):
 
 		self.config_path = path.join(self.dir, self.file_name)
 
-
 	def get_connection_string(self):
 		return str(self._read_config()['MongoConnection'])
 
@@ -44,12 +44,12 @@ class JsonConfigManager(ConfigManager):
 			config['MongoConnection'] = cnn
 		else:
 			config = {
-				'MongoConnection' : cnn
+				'MongoConnection': cnn
 			}
 
 		self._write_config(config)
 
-	def set_files_to_exclude(self, files : list):
+	def set_files_to_exclude(self, files: list):
 		if self._config_exists():
 			config = self._read_config()
 			config['ExcludedFiles'] = files
@@ -59,7 +59,6 @@ class JsonConfigManager(ConfigManager):
 			}
 
 		self._write_config(config)
-
 
 	def get_files_to_exclude(self):
 		return list(self._read_config()['ExcludedFiles'])

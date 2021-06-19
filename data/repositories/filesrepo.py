@@ -63,7 +63,7 @@ class FilesRepo(Repo):
 		templ = name + ' ({})'
 		i = 1
 		while self.names_repo.exists(templ.format(i)):
-			i+=1
+			i += 1
 
 		return templ.format(i)
 

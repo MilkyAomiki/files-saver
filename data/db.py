@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from gridfs import GridFS
 
+
 class DbManager:
 	def __init__(self, cnn_str):
 		self._client = MongoClient(cnn_str)

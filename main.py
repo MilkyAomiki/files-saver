@@ -50,7 +50,7 @@ def save_files_from_dir(dir, i: int = 1, recursive=False):
 	return i
 
 
-def save_files(paths: 'list[str]', recursively = False):
+def save_files(paths: 'list[str]', recursively=False):
 	pic_repo = FilesRepo()
 
 	if len(paths) == 1:
@@ -65,7 +65,8 @@ def save_files(paths: 'list[str]', recursively = False):
 			size = pathhelper.calc_dir_size(paths[0], recursively)
 			size = filehelper.convert_bytes(size)
 
-			print(f'The total size of files to save is {"{:,}".format(round(size[0], 1))} {size[1]}')
+			print(
+				f'The total size of files to save is {"{:,}".format(round(size[0], 1))} {size[1]}')
 
 			if ask_yes_no_question(f'Save files?'):
 				save_files_from_dir(paths[0], recursive=recursively)
@@ -84,7 +85,8 @@ def save_files(paths: 'list[str]', recursively = False):
 
 		size = filehelper.convert_bytes(size)
 
-		print(f'The total size of files to save is {"{:,}".format(round(size[0], 1))} {size[1]}')
+		print(
+			f'The total size of files to save is {"{:,}".format(round(size[0], 1))} {size[1]}')
 
 		if not ask_yes_no_question(f'Save files?'):
 			sys.exit()
@@ -141,15 +143,18 @@ def remove_file(name):
 	files_repo.remove(name)
 	print('Done')
 
+
 def remove_all_files():
 	files_repo = FilesRepo()
 	print('Removing...')
 	files_repo.remove_all()
 	print('Done')
 
+
 def set_cnn_str_config(cnn):
 	config = JsonConfigManager(os.getcwd())
 	config.set_connection_string(cnn)
+
 
 program_input = ProgramInput()
 repo.set_config(get_configuration(program_input))
@@ -177,6 +182,3 @@ elif program_input.remove_all_files():
 	remove_all_files()
 elif program_input.has_config_connection_string():
 	set_cnn_str_config(program_input.get_config_connection_string())
-
-
-
