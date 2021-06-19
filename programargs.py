@@ -97,7 +97,7 @@ class ProgramInput:
 		return hasattr(self.argvals, 'file_name') and self.argvals.file_name is not None
 
 	def remove_all_files(self):
-		return self.argvals.all
+		return hasattr(self.argvals, 'all') and self.argvals.all
 
 	def remove_file_after_retrieval(self) -> bool:
 		return self.argvals.remove
