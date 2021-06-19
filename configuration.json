@@ -1,0 +1,4 @@
+{
+	"MongoConnection": "mongodb+srv://m001-student:EGJ0VbIs2Pv30Q8t@sandbox.jevqc.mongodb.net/filesdb?retryWrites=true&w=majority",
+	"ExcludedFiles" : ["desktop.ini"]
+}
